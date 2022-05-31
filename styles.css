@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+:root
+{
+    --light-primary-color:          #FF7A00;
+    --light-bg-color:               #ddd;
+    --light-container-box-bg-color: #FAFAFA;
+    --light-primary-text-color:     #5A5A5A;
+}
+
+.main-container
+{
+    background-color: var(--light-bg-color);
+}
+
+
+
+
+body
+{
+    background-color: var(--light-bg-color);
+}
+.container-box
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--light-container-box-bg-color);
+    border-radius: 3mm;
+    margin: 2em;
+    padding: 1em;
+}
+.container-box-header-item
+{
+    display: flex;
+    align-content: space-around;
+}
+.container-box-header-item-category
+{
+    display: flex;
+    padding: 1em;
+    align-content: space-around;
+}
+.container-box-header-item-content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2, h3, p, a
+{
+    color: var(--light-primary-text-color);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+h3
+{
+    font-size: small;
+}
+#saldo
+{
+    font-weight: 500;
+    font-size: x-large;
+}
+.svg-icon
+{
+    width: 1.8em;
+    height: 1.8em;
+}
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect
+{
+    fill: var(--light-primary-color);
+}
+.svg-icon circle
+{
+    fill: var(--light-bg-color);
+}
+.snap-button
+{
+    width: 5em;
+    height: 5em;
+    background-color: var(--light-container-box-bg-color);
+    border-radius: 3em;
+    box-shadow: 2px 4px 10px 0px var(--light-primary-text-color);
+    text-align: center;
+    text-overflow: ellipsis;
+}
+.cards-list
+{
+    list-style: none;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+.cards-list-item
+{
+    display: inline-block;
+    width: 150px;
+    background-color: var(--light-container-box-bg-color);
+    white-space: wrap;
+    border-radius: 4mm;
+
+}
+.cards-list-item-image
+{
+    width: 100%;
+    display: block;
+    border-style: none;
+    border-radius: 4mm;
+}
+.cards-list-item-text
+{
+
+}
+.cards-list-item-action
+{
+    background-color: var(--light-primary-color);
+    margin: 0.3em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+}
