@@ -4,6 +4,7 @@
 body
 {
     font-family: 'Ubuntu', sans-serif;
+    margin: 0;
 }
 p, a, div, h1, h2, h3, h4, h5
 {
@@ -33,6 +34,10 @@ p
 {
     font-weight: 400;
 }
+a
+{
+    text-decoration: none;
+}
 main
 {
     margin: 0 auto;
@@ -50,7 +55,7 @@ main
 }
 .container
 {
-    background-color: #99ccFF;
+    background-color: var(--container-box-bg-color);
     align-content: center;
     border-radius: 23px;
     padding: 10px;
@@ -73,10 +78,20 @@ main
     align-items: center;
     flex-wrap: wrap;
 }
+.snap-button-container
+{
+    background-color:antiquewhite;
+    gap: 10px;
+}
 .snap-button
 {
     border-radius: 100px;
-    box-shadow: 5px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    vertical-align:middle;
+    background-color: var(--container-box-bg-color);
+    box-shadow: 3px 3px 3px gray;
 }
 .break
 {
@@ -139,4 +154,21 @@ main
 .svg-icon circle
 {
     fill:aliceblue;
+}
+footer
+{
+    padding: 15px;
+    font-size: small;
+    color: antiquewhite;
+    background-color: var(--primary-text-color);
+    text-align: center;
+}
+.github-icon
+{
+    fill:antiquewhite;
+}
+.github-anchor
+{
+    color: antiquewhite;
+    text-decoration:underline;
 }
