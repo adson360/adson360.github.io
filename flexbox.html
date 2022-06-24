@@ -17,6 +17,33 @@
     </style>
     <link rel="stylesheet" href="flexbox.css">
     <title>Flexbox</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Despesa', 'Valor em reais', 'nada'],
+          ['Essenciais',       1395, 'nada'],
+          ['Não essenciais',    220, 'nada'],
+          ['Investimentos',     118, 'nada'],
+          ['Sobra do mês',      767, 'nada']]);
+
+        var options = {
+            backgroundColor: 'transparent',
+            title: '',
+            pieHole: 0.7,
+            chartArea: {left:0,top:20,width:'100%',height:'80%'},
+            fontSize: 16,
+            fontName: 'Ubuntu',
+            pieSliceText: 'none',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+        }
+    </script>
 </head>
 <body>
     <main>
@@ -52,69 +79,71 @@
         <h2>Contas a pagar</h2>
         <div class="container half-container"><h3>Não há nada para mostrar aqui :D</h3></div>
         <h2>Despesas por categoria</h2>
-        <div class="container">Aqui deve ser mostrado um gráfico de rosca com legenda no lado esquerdo, mostrando os itens com marcação de cor do lado esquerdo e valor do lado direito, em reais.</div>
+        <div class="container">
+            <div id="donutchart"></div>
+        </div>
         <h2>Quer aprender mais?</h2>    
         <div class="container card-container">
             <div class="card">
                 <img class="card-img-top" src="image/card1.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>     
             <div class="card">
                 <img class="card-img-top" src="image/card2.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>    
             <div class="card">
                 <img class="card-img-top" src="image/card3.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>    
             <div class="card">
                 <img class="card-img-top" src="image/card4.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>         
             <div class="card">
                 <img class="card-img-top" src="image/card5.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>       
             <div class="card">
                 <img class="card-img-top" src="image/card6.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>    
             <div class="card">
                 <img class="card-img-top" src="image/card7.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>    
             <div class="card">
                 <img class="card-img-top" src="image/card8.jpeg"/>
                 <div class="card-body">
-                    <p class="card-body-text">A cabeça do cara tá piradona kakakaka</p>
+                    <p class="card-body-text">Este é um card com conteúdo em texto</p>
                     <a class="card-body-button">Saber mais</a>
                 </div>
             </div>    
         </div>
     </main>
     <footer>
-        Esta aplicação é uma atividade acadêmica realizada pelos alunos
+        Esta aplicação é uma atividade acadêmica realizada por alunos
         do Eixo Computação da Univesp em 2022.1, na disciplina de
         Projeto Integrador 2 para Computação.
         <br>
