@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Financeiro</title>
+</head>
+<body>
+    <nav>
+        <a href="#">Financeiro</a>
+        <ol>
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="detalhes.html">Detalhes</a></li>
+            <li><a href="categoria.html">Despesas por categoria</a></li>
+            <li><a href="planejamento.html">Planejamento de despesas</a></li>
+            <li><a href="#"></a>Sair da minha conta</li>
+        </ol>
+    </nav>
+<div class="main-container">
+    <header>
+        <h1>Bom dia, Gabriel</h1>
+        <input type="month" id="start" name="start" min="2022-04" value="2022-04">
+        <div class="container-box">
+            <div class="container-box-header-item-content">
+                <h3>SALDO</h3>
+                <p id="saldo">R$ 5000,00</p>
+            </div>
+            <div class="container-box-header-item">
+                <div class="container-box-header-item-category">
+                    <svg class="svg-icon" viewBox="0 0 28 28">
+                        <circle r="14" cy="14" cx="14"></circle>
+                        <rect ry="2" y="12" x="5" height="4" width="18"></rect>
+                        <rect ry="2" y="5" x="12" height="18" width="4"></rect>
+                    </svg>
+                    <div class="container-box-header-item-content">
+                        <h3>RECEITAS</h3>
+                        <p>2500,00</p>
+                    </div>
+                </div>
+                <div class="container-box-header-item-category">
+                    <svg class="svg-icon" viewBox="0 0 28 28">
+                        <circle r="14" cy="14" cx="14"></circle>
+                        <rect ry="2" y="12" x="5" height="4" width="18"></rect>
+                    </svg>
+                    <div class="container-box-header-item-content">
+                        <h3>DESPESAS</h3>
+                        <p>1733,00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div>
+            <div class="snap-button">
+                <a href="#">
+                    <svg class="svg-icon" viewBox="0 0 28 28">
+                        <rect ry="2" y="12" x="5" height="4" width="18"></rect>
+                        <rect ry="2" y="5" x="12" height="18" width="4"></rect>
+                    </svg>
+                    Adicionar receita
+                </a>    
+            </div>
+        </div>
+
+
+        <h2>Contas a pagar</h2>
+        <div class="container-box">
+
+        </div>
+
+        <h2>Despesas por categoria</h2>
+        <div class="container-box">
+
+        </div>
+
+        <h2>Você pode gostar</h2>
+        <ul class="cards-list">
+            <li class="cards-list-item">
+                <img class="cards-list-item-image" src="image/julius.jpg">
+                <p class="cards-list-item-text">"Se não comprar nada, o desconto é maior". Reveja o episódio.</p>
+                <a class="cards-list-item-action" href="#">Quero ver</a>
+            </li>
+            <li class="cards-list-item">
+                <img class="cards-list-item-image" src="image/julius.jpg">
+                <p class="cards-list-item-text">"Se não comprar nada, o desconto é maior". Reveja o episódio.</p>
+                <a class="cards-list-item-action" href="#">Quero ver</a>
+            </li>
+        </ul>
+    </main>
+</div>    
+</body>
+</html>
