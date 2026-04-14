@@ -1,43 +1,535 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Painel de Serviços FOSS</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <style>
-        body
-        {
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            /* Palette Object: {"Space Indigo":"22223b","Dusty Grape":"4a4e69","Lilac Ash":"9a8c98","Almond Silk":"c9ada7","Parchment":"f2e9e4"} */
+            --space-indigo: #22223b;
+            --dusty-grape: #4a4e69;
+            --lilac-ash: #9a8c98;
+            --almond-silk: #c9ada7;
+            --parchment: #f2e9e4;
+            --bg-color: #f2e9e4;
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --card-bg-hover: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(34, 34, 59, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--space-indigo);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            /* Subtly patterned background using radial gradients */
+            background-image: radial-gradient(circle at 10% 20%, rgba(201,173,167,0.2) 0%, transparent 20%), 
+                              radial-gradient(circle at 90% 80%, rgba(154,140,152,0.15) 0%, transparent 20%);
+        }
+
+        header {
             text-align: center;
-            padding: 50px;
-            margin: 0 auto;
-            background-color:blanchedalmond;
+            margin-bottom: 3rem;
+            max-width: 800px;
         }
-        h1
-        {
-            color:black;
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--space-indigo);
+            letter-spacing: -0.5px;
         }
-        .button
-        {
-            padding: 5px 30px;
-            background-color:coral;
-            border-radius: 8px;
+
+        header p {
+            color: var(--dusty-grape);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1100px;
+            flex-grow: 1;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--space-indigo);
+            border-bottom: 2px solid rgba(201,173,167,0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- FOSS GRID --- */
+        .foss-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .foss-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
             text-decoration: none;
-            color: rgb(255, 255, 255);
         }
-        img
-        {
-            width: 200px;
-            max-width: 30%;
+
+        .foss-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-bg-hover);
+            box-shadow: 0 12px 40px rgba(34, 34, 59, 0.1);
+        }
+
+        .foss-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .foss-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(201,173,167,0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--space-indigo);
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            transition: background 0.3s;
+        }
+
+        .foss-card:hover .foss-icon {
+            background-color: var(--almond-silk);
+            color: #fff;
+        }
+
+        .foss-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--space-indigo);
+            line-height: 1.2;
+        }
+
+        .foss-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: auto; /* Push link to bottom */
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background-color: rgba(154,140,152,0.15);
+            color: var(--dusty-grape);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            border: 1px solid rgba(154,140,152,0.2);
+        }
+
+        .foss-link {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--lilac-ash);
+            margin-top: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .foss-card:hover .foss-link {
+            color: var(--dusty-grape);
+        }
+
+        /* --- FILES TABLE --- */
+        .table-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background-color: rgba(255,255,255,0.5);
+            border-bottom: 2px solid rgba(201,173,167,0.3);
+        }
+
+        th {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: var(--dusty-grape);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(154,140,152,0.1);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .file-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 400;
+            color: var(--space-indigo);
+        }
+
+        .file-icon {
+            font-size: 1.5rem;
+            color: var(--lilac-ash);
+        }
+
+        .download-link {
+            color: var(--dusty-grape);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+            background-color: rgba(154,140,152,0.1);
+            width: fit-content;
+        }
+
+        .download-link:hover {
+            background-color: var(--almond-silk);
+            color: #fff;
+        }
+
+        .empty-state, .loading-state {
+            padding: 3rem;
+            text-align: center;
+            color: var(--lilac-ash);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .empty-state i, .loading-state i {
+            font-size: 2.5rem;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .foss-grid {
+                grid-template-columns: 1fr;
+            }
+            th, td {
+                padding: 0.8rem 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Desafio Generation Brasil</h1>
-    <a class="button" href="https://www.heroku.com/"><strong>Link</strong></a>
-    <p>Precisei fazer assim. Estava com problemas no link na hora de subir.</p>
-    <p>Espero que possam considerar.</p>
-    <img alt="Gato de botas apelando" src="https://freepngimg.com/thumb/puss_in_boots/32921-5-puss-in-boots-transparent.png" />
+
+    <header>
+        <h1>Painel de Serviços</h1>
+        <p>Acesso rápido às plataformas open-source e diretórios de arquivos.</p>
+    </header>
+
+    <main>
+        <!-- FOSS Section -->
+        <section id="foss-section">
+            <h2 class="section-title"><i class="ph ph-squares-four"></i> Plataformas FOSS</h2>
+            <div class="foss-grid">
+                
+                <!-- Metabase -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-chart-bar"></i></div>
+                        <h3 class="foss-title">Metabase</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">Analytics</span>
+                        <span class="tag">Data</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+                <!-- GLPI 10 -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-headset"></i></div>
+                        <h3 class="foss-title">GLPI 10</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">ITSM</span>
+                        <span class="tag">Helpdesk</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+                <!-- GLPI 11 -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-headset"></i></div>
+                        <h3 class="foss-title">GLPI 11</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">ITSM</span>
+                        <span class="tag">Preview</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+                <!-- GLPI 11 + Plugin Uninstall -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-puzzle-piece"></i></div>
+                        <h3 class="foss-title">GLPI 11</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">ITSM</span>
+                        <span class="tag">Uninstall Plugin</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+                <!-- GLPI 11 + Plugin Fields -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-list-plus"></i></div>
+                        <h3 class="foss-title">GLPI 11</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">ITSM</span>
+                        <span class="tag">Fields Plugin</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+                <!-- Kestra -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-git-branch"></i></div>
+                        <h3 class="foss-title">Kestra</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">Orchestration</span>
+                        <span class="tag">Workflows</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+                <!-- n8n -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-share-network"></i></div>
+                        <h3 class="foss-title">n8n</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">Automation</span>
+                        <span class="tag">Integration</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+                <!-- NextCloud -->
+                <a href="#" class="foss-card">
+                    <div class="foss-header">
+                        <div class="foss-icon"><i class="ph ph-cloud-arrow-up"></i></div>
+                        <h3 class="foss-title">NextCloud</h3>
+                    </div>
+                    <div class="foss-tags">
+                        <span class="tag">Storage</span>
+                        <span class="tag">Collaboration</span>
+                    </div>
+                    <div class="foss-link">Acessar plataforma <i class="ph ph-arrow-right"></i></div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Files Section -->
+        <section id="files-section">
+            <h2 class="section-title"><i class="ph ph-folder-open"></i> Arquivos Disponíveis</h2>
+            
+            <div class="table-container">
+                <table id="files-table">
+                    <thead>
+                        <tr>
+                            <th>Arquivo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="files-tbody">
+                        <tr>
+                            <td colspan="2">
+                                <div class="loading-state">
+                                    <i class="ph ph-spinner-gap ph-spin"></i>
+                                    <span>Carregando arquivos do repositório...</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tableBody = document.getElementById("files-tbody");
+            const GITHUB_API_URL = "https://api.github.com/repos/adson360/adson360.github.io/contents/files";
+
+            // Helper function to get an icon based on file extension
+            function getIconForFile(filename) {
+                const ext = filename.split('.').pop().toLowerCase();
+                switch (ext) {
+                    case 'pdf': return 'ph-file-pdf';
+                    case 'jpg':
+                    case 'jpeg':
+                    case 'png':
+                    case 'gif':
+                    case 'svg': return 'ph-file-image';
+                    case 'zip':
+                    case 'rar':
+                    case 'gz': return 'ph-file-archive';
+                    case 'txt':
+                    case 'md': return 'ph-file-text';
+                    case 'csv':
+                    case 'xlsx': return 'ph-file-xls';
+                    case 'mp4':
+                    case 'mkv': return 'ph-file-video';
+                    default: return 'ph-file';
+                }
+            }
+
+            // Render empty state
+            function renderEmptyState(message) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="2">
+                            <div class="empty-state">
+                                <i class="ph ph-folder-dashed"></i>
+                                <span>${message}</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            // Fetch directory contents
+            fetch(GITHUB_API_URL)
+                .then(response => {
+                    if (response.status === 404) {
+                        throw new Error("Diretório /files não encontrado neste repositório. Por favor, crie a pasta 'files' e adicione arquivos nela.");
+                    }
+                    if (!response.ok) {
+                        throw new Error("Erro ao buscar arquivos da API do GitHub.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    tableBody.innerHTML = ""; // Clear loading state
+                    
+                    if (!Array.isArray(data) || data.length === 0) {
+                        renderEmptyState("A pasta 'files' está vazia.");
+                        return;
+                    }
+
+                    // Filter out non-files (e.g. subdirectories) if you only want to list files
+                    const files = data.filter(item => item.type === "file");
+
+                    if (files.length === 0) {
+                        renderEmptyState("Nenhum arquivo encontrado na pasta 'files'.");
+                        return;
+                    }
+
+                    // Generate rows
+                    files.forEach(file => {
+                        const tr = document.createElement("tr");
+                        const iconClass = getIconForFile(file.name);
+                        
+                        // We use file.download_url to link directly to the raw file
+                        tr.innerHTML = `
+                            <td>
+                                <div class="file-cell">
+                                    <i class="ph ${iconClass} file-icon"></i>
+                                    <span>${file.name}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="${file.download_url}" target="_blank" rel="noopener noreferrer" class="download-link">
+                                    <i class="ph ph-download-simple"></i> Baixar
+                                </a>
+                            </td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(error => {
+                    console.error("Erro no Fetch:", error);
+                    renderEmptyState(error.message);
+                });
+        });
+    </script>
 </body>
 </html>
